@@ -4,13 +4,21 @@ void main() {
   runApp(SignUp());
 }
 
+const PrimaryColor = Colors.white;
+
 class SignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-      appBar: AppBar(title: Text('Home')),
+      appBar: AppBar( 
+        backgroundColor: PrimaryColor,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back, 
+          color: Colors.grey,),
+          onPressed: null,
+        )),
       body: SignUpPage(),
     ));
   }
@@ -24,7 +32,6 @@ class SignUpPage extends StatefulWidget {
 }
 
 class SignUpPageState extends State<SignUpPage> {
-  // final _formKey = 
   String _selectedCountry;
   List country = [
     'India', 'Italy', 'Indonesia', 'Iceland', 'Iran',
@@ -84,16 +91,15 @@ class SignUpPageState extends State<SignUpPage> {
                       child: new DropdownButton(
                         hint: new Text("Please select your country"),
                         dropdownColor: Colors.white,
-                        // elevation: 50,
                         icon: Icon(Icons.arrow_drop_down),
                         iconSize: 30.0,
-                        // iconColor: Colors.deepPurple[500],
                         isExpanded: true,
                         style: TextStyle(color: Colors.grey, fontSize: 16.0),
                         value: _selectedCountry,
                         onChanged: (value) {
                           setState(() {
                             _selectedCountry = value;
+                            // backgroundColor: Colors.purple;
                           });
                         },
                         items: country.map((value) {
