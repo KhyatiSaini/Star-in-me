@@ -25,6 +25,10 @@ class SignUpPage extends StatefulWidget {
 
 class SignUpPageState extends State<SignUpPage> {
   // final _formKey = 
+  String _selectedCountry;
+  List country = [
+    'India', 'Italy', 'Indonesia', 'Iceland', 'Iran',
+  ];
   bool _isChecked = false;
 
   Widget build(BuildContext context) {
@@ -57,7 +61,7 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   Container(
-                      padding: EdgeInsets.fromLTRB(0.0, 25.0, 0.0, 0.0),
+                      padding: EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
                       child: Checkbox(
                         value: _isChecked,
                         tristate: false,
@@ -69,11 +73,40 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(0.0, 50.0, 0.0, 0.0),
+                    padding: EdgeInsets.fromLTRB(10.0, 60.0, 10.0, 0.0),
                     // drop down list to select country
+                    child: Container(
+                      padding: EdgeInsets.only(left: 10.0, right: 10.0),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Colors.deepPurple[400], width: 1.5,),
+                        borderRadius: BorderRadius.circular(5.0),
+                        ),
+                      child: new DropdownButton(
+                        hint: new Text("Please select your country"),
+                        dropdownColor: Colors.white,
+                        // elevation: 50,
+                        icon: Icon(Icons.arrow_drop_down),
+                        iconSize: 30.0,
+                        // iconColor: Colors.deepPurple[500],
+                        isExpanded: true,
+                        style: TextStyle(color: Colors.grey, fontSize: 16.0),
+                        value: _selectedCountry,
+                        onChanged: (value) {
+                          setState(() {
+                            _selectedCountry = value;
+                          });
+                        },
+                        items: country.map((value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                           );
+                        }).toList(),
+                       ),
+                    ),                    
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(45.0, 40.0, 0.0, 0.0),
+                    padding: EdgeInsets.fromLTRB(45.0, 30.0, 0.0, 0.0),
                     child: Text('Yes, I am female',
                       style: TextStyle(
                         fontSize: 16.0,
@@ -83,7 +116,7 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   Container(  
-                    padding: const EdgeInsets.fromLTRB(10.0, 100.0, 0.0, 0.0),  
+                    padding: const EdgeInsets.fromLTRB(10.0, 120.0, 0.0, 0.0),  
                     child: new RaisedButton(  
                     child: const Text('Sign up with LinkedIn'), 
                     color: Colors.deepPurple[500],
@@ -91,7 +124,7 @@ class SignUpPageState extends State<SignUpPage> {
                     onPressed: ()=>print('Sign up with LinkedIn clicked'),  
                   )),
                   Container(  
-                    padding: const EdgeInsets.fromLTRB(195.0, 100.0, 0.0, 0.0),  
+                    padding: const EdgeInsets.fromLTRB(195.0, 120.0, 0.0, 0.0),  
                     child: new RaisedButton(  
                     child: const Text('Sign up with Google'), 
                     color: Colors.deepPurple[500],
@@ -99,7 +132,7 @@ class SignUpPageState extends State<SignUpPage> {
                     onPressed: ()=>print('Sign up with Google clicked'),  
                   )), 
                   Container(
-                    padding: const EdgeInsets.fromLTRB(10.0, 160.0, 0.0, 0.0),
+                    padding: const EdgeInsets.fromLTRB(10.0, 175.0, 0.0, 0.0),
                     child: Container(
                     height: 1.0,
                     width: 160.0,
@@ -107,7 +140,7 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   Container(
-                    padding: EdgeInsets.fromLTRB(175.0, 155.0, 0.0, 0.0),
+                    padding: EdgeInsets.fromLTRB(175.0, 170.0, 0.0, 0.0),
                     child: Text('OR',
                       style: TextStyle(
                         fontSize: 12.0,
@@ -116,7 +149,7 @@ class SignUpPageState extends State<SignUpPage> {
                     ),
                   ),
                   Container(
-                    padding: const EdgeInsets.fromLTRB(195.0, 160.0, 0.0, 0.0),
+                    padding: const EdgeInsets.fromLTRB(195.0, 175.0, 0.0, 0.0),
                     child: Container(
                     height: 1.0,
                     width: 160.0,
@@ -127,7 +160,7 @@ class SignUpPageState extends State<SignUpPage> {
               ),
             ),   
           Container(
-            padding: EdgeInsets.all(10),
+            padding: EdgeInsets.only(left: 10.0, right: 10.0,),
             child: Column(
             children: <Widget>[
                 SizedBox(height: 8,),
